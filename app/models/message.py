@@ -5,13 +5,10 @@ from app.models.base_model import BaseClass, Base
 
 class Messages(BaseClass, Base):
     __tablename__ = 'messages'
-
-    MessageID = Column(Integer, primary_key=True)
-    SenderID = Column(Integer, ForeignKey('users.id'))
-    ReceiverID = Column(Integer, ForeignKey('users.id'))
-    Content = Column(String)
-    SentAt = Column(DateTime)
+    SenderID = Column(String(60), ForeignKey('users.id'))
+    ReceiverID = Column(String(60), ForeignKey('users.id'))
+    Content = Column(String(110))
     IsRead = Column(Boolean)
 
-    sender = relationship("Users", foreign_keys=[SenderID])
-    receiver = relationship("Users", foreign_keys=[ReceiverID])
+    sender = relationship("User", foreign_keys=[SenderID])
+    receiver = relationship("User", foreign_keys=[ReceiverID])

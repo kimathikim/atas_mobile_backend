@@ -7,16 +7,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from app.models.base_model import Base
 from app.models.user import User
-<<<<<<< HEAD
 from app.models.company import Company
 from app.models.jobs import Job
 classes = {User.__name__: User, Company.__name__: Company,Job.__name__:Job}
 
-=======
-from app.models.location import User,Jobs,Location,JobLocation
-from app.models.education import Education,UserEducation
-classes = {User.__name__: User}
->>>>>>> 4849f20 (more models)
 
 
 class DBstorage:

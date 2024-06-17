@@ -9,19 +9,26 @@ from app.models.base_model import Base
 from app.models.user import User
 from app.models.company import Company
 from app.models.JobPostings import Job
+from app.models.skills import Skills
+from app.models.user_skills import UserSkills
 from app.models.location import Location
 from app.models.education import Education
 from app.models.message import Messages
 from app.models.userEducation import UserEducation
+
 classes = {
-    User.__name__: User,
+    User: User,
     Company.__name__: Company,
-    Job.__name__:Job, 
-    Location.__name__:Location, 
-    Education.__name__:Education,
+    Job.__name__: Job,
+    Location.__name__: Location,
+    Education.__name__: Education,
     Messages.__name__: Messages,
-    UserEducation.__name__: UserEducation
-    }
+    UserEducation.__name__: UserEducation,
+    Skills.__name__: Skills,
+    UserSkills.__name__: UserSkills
+
+}
+
 
 class DBstorage:
     """Initialize with the MySQL database"""

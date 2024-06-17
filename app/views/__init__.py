@@ -4,6 +4,11 @@ app_views = Blueprint("app_views", __name__, url_prefix="/api/v1/")
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
 from app.views.user import *
+from app.views.userProfile import *
+from app.views.skill import *
+
+from app.models.skills import Skills
+from app.models.user_skills import UserSkills
 from app.models.user import User
 from app.models import storage
 

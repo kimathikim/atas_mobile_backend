@@ -1,14 +1,13 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from app.models.base_model import Base, BaseClass
 # import relationship
-from app.models.User import User
-from app.models.JobPostings import Job
+from app.models.user import User
 from sqlalchemy.orm import relationship
 
 
 class Job(BaseClass, Base):
     __tablename__ = 'jobs'
-    EmployerID = Column(Integer, ForeignKey('users.UserID'), nullable=False)
+    EmployerID = Column(Integer, ForeignKey('users.id'), nullable=False)
     JobTitle = Column(String(255), nullable=False)
     JobDescription = Column(Text, nullable=True)
     JobType = Column(String(50), nullable=True)
@@ -18,5 +17,4 @@ class Job(BaseClass, Base):
 
     employer = relationship('User', back_populates='jobs')
 
-    User.jobs = relationship('Job', order_by=Job.id,
-                             back_populates='employer')
+    User.jobs = relationship('Job', back_populates='employer')

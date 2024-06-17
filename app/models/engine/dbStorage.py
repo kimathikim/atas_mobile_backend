@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from app.models.base_model import Base
 from app.models.user import User
 from app.models.company import Company
-from app.models.jobs import Job
+from app.models.JobPostings import Job
 from app.models.location import Location
 from app.models.education import Education
 classes = {User.__name__: User, Company.__name__: Company,Job.__name__:Job, Location.__name__:Location, Education__name__:Education}

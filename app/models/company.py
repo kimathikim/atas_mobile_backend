@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''This module defines the Company class'''
 from app.models.base_model import BaseClass, Base
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, String, Text
 
 
 class Company(BaseClass, Base):

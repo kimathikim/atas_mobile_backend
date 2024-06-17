@@ -10,6 +10,6 @@ class Notifications(BaseClass, Base):
     NotificationType = Column(String)
     Message = Column(String)
     IsRead = Column(Boolean)
-    CreatedAt = Column(DateTime)
+
 
     user = relationship("Users", foreign_keys=[UserID])

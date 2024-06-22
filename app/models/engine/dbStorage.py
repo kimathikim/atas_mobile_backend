@@ -12,10 +12,12 @@ from app.models.JobPostings import Job
 from app.models.skills import Skills
 from app.models.user_skills import UserSkills
 from app.models.location import Location
+from app.models.experience import Experience
+from app.models.userExperience import UserExperience
 from app.models.education import Education
 from app.models.message import Messages
 from app.models.userEducation import UserEducation
-
+from app.models.notification import Notification
 classes = {
     User: User,
     Company.__name__: Company,
@@ -25,7 +27,10 @@ classes = {
     Messages.__name__: Messages,
     UserEducation.__name__: UserEducation,
     Skills.__name__: Skills,
-    UserSkills.__name__: UserSkills
+    UserSkills.__name__: UserSkills,
+    Experience.__name__: Experience,
+    UserExperience.__name__: UserExperience,
+    Notification.__name__: Notification
 
 }
 

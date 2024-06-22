@@ -10,9 +10,3 @@ class UserEducation(BaseClass, Base):
     UserID = Column(String(60), ForeignKey('users.id'), nullable=False)
     EducationID = Column(String(60), ForeignKey(
         'education.id'), nullable=False)
-
-    # user = relationship('User', back_populates='usereducation')
-    # education = relationship('Education', back_populates='usereducation')
-
-    # User.user_education = relationship('UserEducation',  back_populates='users')
-    # Education.user_education = relationship('UserEducation', back_populates='education')

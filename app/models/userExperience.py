@@ -8,5 +8,5 @@ class UserExperience(BaseClass, Base):
     UserID = Column(String(60), ForeignKey('users.id'))
     ExperienceID = Column(String(60), ForeignKey('experience.id'))
 
-    user = relationship("Users", foreign_keys=[UserID])
+    user = relationship("User", foreign_keys=[UserID])
     experience = relationship("Experience", foreign_keys=[ExperienceID])

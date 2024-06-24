@@ -1,8 +1,8 @@
 from app.models.user import User
 from app.models import storage
 user = User()
-user.email = "brain@j"
-user.password = "rot"
+user.email = "bkimathi@kabarak.ac.ke"
+user.password = "Kimathi@2022"
 user.first_name = "Brai`"
 user.last_name = "Kimathkk"
 user.save()

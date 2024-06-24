@@ -104,3 +104,11 @@ class DBStorage:
             obj = self.__session.query(cls).get(id)
             return obj
         return None
+
+    # get object by email
+    def get_by_email(self, cls, email):
+        """get an object from the database"""
+        if cls is not None and email is not None:
+            obj = self.__session.query(cls).filter_by(email=email).first()
+            return obj
+        return None

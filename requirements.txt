@@ -95,7 +95,7 @@ mysqlclient==2.2.4
 mytimer==1.2
 neovim==0.3.1
 numpy==1.26.4
-oauthlib==3.2.0
+oauthlib==3.2.2
 openai==1.17.1
 openpyxl==3.1.3
 orjson==3.10.0

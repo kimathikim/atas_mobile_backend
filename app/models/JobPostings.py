@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from app.models.base_model import Base, BaseClass
 # import relationship
-from app.models.user import User
 from sqlalchemy.orm import relationship
+from app.models.user import User
 
 
 class Job(BaseClass, Base):
@@ -14,5 +14,4 @@ class Job(BaseClass, Base):
     SalaryRange = Column(String(100), nullable=True)
     Location = Column(String(255), nullable=True)
     Requirements = Column(String(500), nullable=True)
-    employer = relationship('User', back_populates='jobs')
-    User.jobs = relationship('Job',  back_populates='employer')
+    Employer = relationship('User', back_populates='jobs')

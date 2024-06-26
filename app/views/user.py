@@ -2,33 +2,11 @@
 import jwt
 from app.models.user import User
 from app.models import storage
-from app.views import app_views
+from app.views import app_views, token_required
 from flask import jsonify, request, abort, session
 from datetime import datetime, timedelta
 from flasgger import Swagger, swag_from
-from functools import wraps
-import os
 from flask import current_app
-
-
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = request.headers.get('Authorization')
-        secret_key = current_app.config['SECRET_KEY']
-
-        print(token)
-        if not token:
-            return jsonify({"error": "Token is missing"}), 401
-        try:
-            data = jwt.decode(token, secret_key, algorithms=["HS256"])
-            print(data)
-            session.setdefault('logged_in', True)
-        except:
-            return jsonify({"error": "Token is invalid"}), 401
-        return f(*args, **kwargs)  # Add this line
-    return decorated
-
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def create_user():
@@ -62,7 +40,8 @@ def create_user():
                 error:
                   type: string
     """
-    required_fields = ['email', 'password', 'first_name', 'last_name']
+    required_fields = ['email', 'password', 'first_name',
+                       'last_name', 'user_type']
     data = request.get_json()
 
     if not data:
@@ -148,7 +127,7 @@ def user_login():
 
 @ app_views.route('/users', methods=['GET'], strict_slashes=False)
 @ token_required
-def get_users():
+def get_users(current_user):
     """
     Get all users
     ---
@@ -167,6 +146,7 @@ def get_users():
                   items:
                     $ref: '#/components/schemas/User'
     """
+    print(current_user.id)
     if session.get('logged_in') is None or not session['logged_in']:
         return jsonify({"error": "Unauthorized"}), 401
 

@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
 """App to register blueprint and start Flask"""
-from dotenv import load_dotenv
-import os
-from flask import Flask, jsonify
-from flask_cors import CORS
-from app.models import storage
-from app.views import app_views
-from flask_swagger_ui import get_swaggerui_blueprint
 from flask_swagger import swagger
+from flask_swagger_ui import get_swaggerui_blueprint
+from app.views import app_views
+from app.models import storage
+from flask_cors import CORS
+from flask import Flask, jsonify
+from dotenv import load_dotenv
 
 
 def create_app():
     app = Flask(__name__)
 
-    load_dotenv()
-
     # Configuration settings
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    app.config['SECRET_KEY'] = "👍"
     app.config["SESSION_TYPE"] = "sqlalchemy"
     app.config['SESSION_SQLALCHEMY'] = None
 

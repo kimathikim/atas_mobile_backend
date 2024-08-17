@@ -5,7 +5,6 @@ from app.models import storage
 from app.views import app_views, token_required
 from flask import jsonify, request, abort, session
 from datetime import datetime, timedelta
-from flasgger import Swagger, swag_from
 from flask import current_app
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)

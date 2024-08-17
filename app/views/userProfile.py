@@ -13,7 +13,6 @@ from app.views import app_views
 
 from flask import jsonify, request, abort
 from datetime import datetime, timedelta
-from flasgger import Swagger, swag_from
 
 # get a user's profile
 

@@ -46,17 +46,8 @@ class DBStorage:
         AM_PWD = os.getenv("AM_PWD")
         AM_HOST = os.getenv("AM_HOST")
         AM_DB = os.getenv("AM_DB")
-        ENV = os.getenv("ENV")
 
-        if ENV == 'production':
-            self.__engine = create_engine(
-                "postgresql://{}:{}@{}/{}".format(
-                    AM_USER, AM_PWD, AM_HOST, AM_DB
-                ),
-                pool_pre_ping=True,
-            )
-        else:
-            self.__engine = create_engine(
+        self.__engine = create_engine(
                 "mysql+mysqldb://{}:{}@{}/{}".format(
                     AM_USER, AM_PWD, AM_HOST, AM_DB
                 ),

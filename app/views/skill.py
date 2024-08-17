@@ -5,7 +5,6 @@ from app.models import storage
 from app.views import app_views
 from flask import jsonify, request, abort
 from datetime import datetime, timedelta
-from flasgger import Swagger, swag_from
 
 
 # add new Skills

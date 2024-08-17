@@ -1,11 +1,7 @@
 # created by virtualenv automatically
-<<<<<<< HEAD
 pycache_
 dist
 ATAA_M.egg-info
-=======
-__pycache__
-dist
-ATAA_M.egg-info
+.env
+venv
 
->>>>>>> main

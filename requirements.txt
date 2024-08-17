@@ -20,6 +20,7 @@ mistune==3.0.2
 mysqlclient==2.2.4
 packaging==24.1
 pycparser==2.22
+PyMySQL==1.1.1
 python-dotenv==1.0.1
 PyYAML==6.0.2
 referencing==0.35.1

@@ -48,11 +48,11 @@ class DBStorage:
         AM_DB = os.getenv("AM_DB")
 
         self.__engine = create_engine(
-                "mysql+mysqldb://{}:{}@{}/{}".format(
-                    AM_USER, AM_PWD, AM_HOST, AM_DB
-                ),
-                pool_pre_ping=True,
-            )
+            "mysql+pymysql://{}:{}@{}/{}".format(
+                AM_USER, AM_PWD, AM_HOST, AM_DB
+            ),
+            pool_pre_ping=True,
+        )
 
     def all(self, cls=None):
         """query on the current database session"""

@@ -1,7 +1,13 @@
-# created by virtualenv automatically
-pycache_
-dist
-ATAA_M.egg-info
+# Ignore directories created by virtualenv
 .env
 venv
 
+# Ignore Python cache and compiled files
+__pycache__
+*.pyc
+
+# Ignore distribution files
+dist
+
+# Ignore egg-info directories
+*.egg-info

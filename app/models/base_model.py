@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""This module defines the base class and all the neccesary function """
+"""This module defines the base class and all the neccesary function"""
 
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
@@ -13,12 +13,13 @@ time = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseClass:
     """Base class"""
+
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, **kwargs):
-        """Initialize the base model class """
+        """Initialize the base model class"""
         if kwargs:
             """Set the attribute of the base model"""
             for key, value in kwargs.items():
@@ -60,11 +61,13 @@ class BaseClass:
         """Function to save the object"""
         self.updated_at = datetime.utcnow()
         from app.models import storage
+
         storage.new(self)
         storage.save()
 
     def delete(self):
         """Deletes the current instalnce from the storage"""
         from app.models import storage
+
         storage.delete(self)
         storage.save()

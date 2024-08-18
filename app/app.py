@@ -37,7 +37,7 @@ def create_app():
     # Error handlers
     @app.errorhandler(406)
     def page_not_found(e):
-        return {"error": "Not found"}, 406
+        return {"error": "Not found"}, 404
 
     @app.errorhandler(502)
     def internal_error(e):

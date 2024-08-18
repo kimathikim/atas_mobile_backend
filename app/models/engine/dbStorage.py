@@ -18,6 +18,7 @@ from app.models.education import Education
 from app.models.message import Messages
 from app.models.userEducation import UserEducation
 from app.models.notification import Notification
+
 classes = {
     User: User,
     Company.__name__: Company,
@@ -30,8 +31,7 @@ classes = {
     UserSkills.__name__: UserSkills,
     Experience.__name__: Experience,
     UserExperience.__name__: UserExperience,
-    Notification.__name__: Notification
-
+    Notification.__name__: Notification,
 }
 
 
@@ -48,9 +48,8 @@ class DBStorage:
         AM_DB = os.getenv("AM_DB")
 
         self.__engine = create_engine(
-            "mysql+pymysql://{}:{}@{}/{}".format(
-                AM_USER, AM_PWD, AM_HOST, AM_DB
-            ),
+            "mysql+pymysql://{}:{}@{}/{}".format(AM_USER,
+                                                 AM_PWD, AM_HOST, AM_DB),
             pool_pre_ping=True,
         )
 
@@ -79,15 +78,18 @@ class DBStorage:
             self.__session.delete(obj)
 
     def reload(self):
-        """reloads data from the database"""
+        """Create all tables in the database and
+        the current database session"""
+
         Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess_factory)
-        self.__session = Session
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(session_factory)
+        self.__session = Session()
 
     def close(self):
         """closes the session"""
-        self.__session.remove()
+        self.__session.close()
 
     def get(self, cls, id):
         """get an object from the database"""
